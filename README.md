@@ -8,13 +8,9 @@ A little about me:
 
 Through the GiF website [Tenor](https://tenor.com) two meme's I found that captures how I feel about university is:
 
-1.
+1. ![Snoopy](https://media1.tenor.com/m/sDTq8crIxJcAAAAC/snoopy-joe-cool.gif)
 
-![Snoopy](https://media1.tenor.com/m/sDTq8crIxJcAAAAC/snoopy-joe-cool.gif)
-
-2.
-
-![This is fine](https://media1.tenor.com/m/MYZgsN2TDJAAAAAC/this-is.gif)
+2. ![This is fine](https://media1.tenor.com/m/MYZgsN2TDJAAAAAC/this-is.gif)
 
 Thank you for your time!
 
