@@ -10,8 +10,8 @@ Through the GiF website [Tenor](https://tenor.com) two meme's I found that captu
 
 1. ![Snoopy](https://media1.tenor.com/m/sDTq8crIxJcAAAAC/snoopy-joe-cool.gif)
 
-2. ![This is fine](https://media1.tenor.com/m/MYZgsN2TDJAAAAAC/this-is.gif)
+1. ![This is fine](https://media1.tenor.com/m/MYZgsN2TDJAAAAAC/this-is.gif)
 
 Thank you for your time!
 
-![Thank you](https://media1.tenor.com/m/WjoUFaID8ScAAAAC/cat-cute.gif)
+![Thank you](https://media.tenor.com/YnwqgR1lBGYAAAAi/good.gif)
