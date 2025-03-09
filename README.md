@@ -1,5 +1,5 @@
 # stats220
-### stats220 - My repo for STATS 220  
+### My repo for STATS 220  
 A little about me: 
 
 * I am in my second year of University, double majoring in *Psychology* and *Statistics*  
