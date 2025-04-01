@@ -1,0 +1,179 @@
+---
+title: My dynamic report
+output: html_fragment
+--- 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+library(tidyverse)
+
+```
+
+```{css}
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
+body {font-family: 'EB Garmond';
+      background-color: #EEB868;
+      color: #CD5334}
+
+h2 {background-color: #FFFFFF;
+    padding = 10px}
+
+h3 {color: #CD5334}
+
+```
+
+## Finding correlations between different variables and how full the AT bus rides get 
+
+![](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExazNwb3FlcnYyNzByazJqaTl6amF6cWZmMWF2OGlsMXEzNXRpcjZwNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/RbjrJ0vNzSyCobT9XJ/giphy.gif)
+ 
+ *In* order to determine correlations with how full a bus get's with other variables such as the bus stop location and whether or not the bus is on time. I have collected my data by logging observations from my daily bus rides for a week, taking note in a Google form. 
+
+
+
+### How late was the bus?
+```{r fig.width = 5, fig.height = 3}
+# importing Google sheet csv
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSNM70cFcVXSqYjOnjR-HwFwnz8n7jHtWWdDEhV6brKNtPiR8GI4Rn4yHFyf1FvX6_PLr8sFhPJg6fY/pub?gid=1147511225&single=true&output=csv")
+
+latest_data <- logged_data %>%
+                  rename(week_day = 2,
+                         time = 3,
+                         temperature = 4,
+                         fullness = 5,
+                         arrival_status = 6,
+                         late_time = 7,
+                         Location = 8)
+
+# late_time
+mean_late <- mean(latest_data$late_time) %>%
+             round(1) %>%
+             paste("minutes", collapse = "")
+
+mean_seconds <- mean(latest_data$late_time*60) %>%
+                round(1) %>%
+                paste("seconds", collapse = "")
+
+
+rides <- length(latest_data$late_time) %>%
+               paste("bus rides")
+
+maximum_late <- max(latest_data$late_time) %>%
+                paste("minutes")
+
+ggplot(data = latest_data) +
+       geom_bar(aes(x = late_time,
+                    fill = "#FFCBDD")) +
+  
+       labs(title = "Length of time bus was late by in minutes",
+                x = "How long was the bus late by in minutes",
+                y = "Number of bus rides",
+          caption = "Source: Google Form")
+
+```
+ 
+  Out of `r rides` the mean time the bus was late by was `r mean_late` or `r mean_seconds`. In addition to this the latest bus to arrive during this week was by `r maximum_late`.
+
+### How full was the bus?
+```{r fig.width = 5, fig.height = 3}
+# importing Google sheet csv
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSNM70cFcVXSqYjOnjR-HwFwnz8n7jHtWWdDEhV6brKNtPiR8GI4Rn4yHFyf1FvX6_PLr8sFhPJg6fY/pub?gid=1147511225&single=true&output=csv")
+
+latest_data <- logged_data %>%
+                  rename(week_day = 2,
+                         time = 3,
+                         temperature = 4,
+                         fullness = 5,
+                         arrival_status = 6,
+                         late_time = 7,
+                         Location = 8)
+
+# fullness
+mean_full <-  mean(latest_data$fullness) %>%
+              round(1)
+minimum_full <- min(latest_data$fullness)
+maximum_full <- max(latest_data$fullness)
+
+# bar chart
+ggplot(data = latest_data) +
+       geom_bar(aes(x = fullness)) +
+                
+       labs(title = "Fullness of bus",
+                x = "Bus fullness",
+                y = "Number of bus rides",
+          caption = "Source: Google Form")
+```
+
+   I measured  how full the bus was by using a scale of 0 to 5, 0 being empty and 5 being completely full. This week the maximum level of fullness was `r maximum_full`, and the minimum fullness of the bus was `r minimum_full` the average fullness of the bus was `r mean_full`.    
+
+```{r fig.width = 5, fig.height = 3}
+# importing Google sheet csv
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSNM70cFcVXSqYjOnjR-HwFwnz8n7jHtWWdDEhV6brKNtPiR8GI4Rn4yHFyf1FvX6_PLr8sFhPJg6fY/pub?gid=1147511225&single=true&output=csv")
+
+latest_data <- logged_data %>%
+                  rename(week_day = 2,
+                         time = 3,
+                         temperature = 4,
+                         fullness = 5,
+                         arrival_status = 6,
+                         late_time = 7,
+                         Location = 8)
+
+
+
+
+```
+
+### Bar chart to show correlation between Bus fullness and Location
+
+```{r fig.width = 5, fig.height = 3}
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSNM70cFcVXSqYjOnjR-HwFwnz8n7jHtWWdDEhV6brKNtPiR8GI4Rn4yHFyf1FvX6_PLr8sFhPJg6fY/pub?gid=1147511225&single=true&output=csv")
+
+latest_data <- logged_data %>%
+                  rename(week_day = 2,
+                         time = 3,
+                         temperature = 4,
+                         fullness = 5,
+                         arrival_status = 6,
+                         late_time = 7,
+                         Location = 8)
+
+ggplot(data = latest_data)+
+       geom_bar(aes(x = fullness,
+                    fill = Location))+
+  
+  labs(title = "Relationship between bus fullness and Bus stop Location",
+     caption = "Source: Google Form",
+           x = "Bus Fullness",
+           y = "Number of Bus Rides")
+
+
+```
+
+### Bar chart to show correlation between Bus fullness and Bus Lateness
+
+```{r fig.width = 5, fig.height = 3}
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSNM70cFcVXSqYjOnjR-HwFwnz8n7jHtWWdDEhV6brKNtPiR8GI4Rn4yHFyf1FvX6_PLr8sFhPJg6fY/pub?gid=1147511225&single=true&output=csv")
+
+latest_data <- logged_data %>%
+                  rename(week_day = 2,
+                         time = 3,
+                         temperature = 4,
+                         fullness = 5,
+                         arrival_status = 6,
+                         late_time = 7,
+                         Location = 8)
+
+ggplot(data = latest_data)+
+       geom_bar(aes(y = fullness,
+                 fill = arrival_status))+
+       
+  labs(title = "Relationship between bus fullness and bus lateness",
+      source = "Google Form",
+           y = "Fullness of bus",
+           x = "Number of Bus Rides",
+           caption = "Source: Google Form")
+
+```
+
+
