@@ -23,14 +23,11 @@ h3 {color: #CD5334}
 
 ```
 
-## Finding correlations between different variables and
-## how full the AT bus rides get 
+## Finding correlations between different variables and how full the AT bus rides get 
 
 ![](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExazNwb3FlcnYyNzByazJqaTl6amF6cWZmMWF2OGlsMXEzNXRpcjZwNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/RbjrJ0vNzSyCobT9XJ/giphy.gif)
  
- *In* order to determine correlations with how full a bus get's with other variables such                                    
-as the bus stop location and whether or not the bus is on time. I have collected my data by                                  
-logging observations from my daily bus rides for a week, taking note in a Google form. 
+ *In* order to determine correlations with how full a bus get's with other variables such as the bus stop location and whether or not the bus is on time. I have collected my data by logging observations from my daily bus rides for a week, taking note in a Google form. 
 
 
 
@@ -107,8 +104,7 @@ ggplot(data = latest_data) +
           caption = "Source: Google Form")
 ```
 
-   I measured  how full the bus was by using a scale of 0 to 5, 0 being empty and 5 being completely                    
-full. This week the maximum level of fullness was `r maximum_full`, and the minimum fullness of the                       bus was `r minimum_full` the average fullness of the bus was `r mean_full`.    
+   I measured  how full the bus was by using a scale of 0 to 5, 0 being empty and 5 being completely full. This week the maximum level of fullness was `r maximum_full`, and the minimum fullness of the bus was `r minimum_full`, the average fullness of the bus was `r mean_full`.    
 
 ```{r fig.width = 5, fig.height = 3}
 # importing Google sheet csv
